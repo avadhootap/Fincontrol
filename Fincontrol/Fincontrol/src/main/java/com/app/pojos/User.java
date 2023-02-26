@@ -1,5 +1,8 @@
 package com.app.pojos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -28,6 +31,14 @@ public class User extends BaseEntity1{
     
     @Column(name = "confirmPassword")
     private String confirmPassword;
+    
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Expense>expense=new ArrayList<Expense>();
+    
+    @OneToMany(mappedBy = "users",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Income>income=new ArrayList<Income>();
+    
+    
 
 	public User(String firstName, String lastname, String city, String email, String password, String confirmPassword) {
 		super();
@@ -38,15 +49,14 @@ public class User extends BaseEntity1{
 		this.password = password;
 		this.confirmPassword = confirmPassword;
 	}
+	
+	
 
 	public User() {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		return "User [firstName=" + firstName + ", lastname=" + lastname + ", city=" + city + ", email=" + email + "]";
-	}
+
 
 	public String getFirstName() {
 		return firstName;
@@ -95,9 +105,12 @@ public class User extends BaseEntity1{
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "User [firstName=" + firstName + ", lastname=" + lastname + ", city=" + city + ", email=" + email
+				+ ", password=" + password + ", confirmPassword=" + confirmPassword + "]";
+	}
     
     
-    
-}
+}	

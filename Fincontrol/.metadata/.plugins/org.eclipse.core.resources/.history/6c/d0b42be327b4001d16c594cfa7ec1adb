@@ -1,0 +1,19 @@
+package com.app.service;
+
+import java.util.List;
+
+import com.app.pojos.Expense;
+
+
+public interface ExpenseServiceImpl {
+	
+	List<Expense>getAllExpense();
+	
+	Expense addExpense(Expense addExpense);
+	
+	String deleteExpense();
+	
+	Expense updateExpense(Expense updateExp);
+	
+
+}

@@ -1,0 +1,38 @@
+package com.app.pojos;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Entity
+@Table(name="User")
+public class User extends BaseEntity1{
+	
+    @Column(name = "first_name")
+	private String firstName;
+    
+    @Column(name = "last_name")
+    private String lastname;
+    
+    private String city;
+    
+    @Column(unique = true)
+    private String email;
+    
+    private String password;
+    
+    @Column(name = "confirmPassword")
+    private String confirmPassword;
+    
+    
+    
+
+}	

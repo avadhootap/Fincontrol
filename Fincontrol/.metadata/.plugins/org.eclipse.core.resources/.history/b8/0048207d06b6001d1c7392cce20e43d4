@@ -1,0 +1,37 @@
+package com.app.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.pojos.Income;
+import com.app.repository.IncomeRepo;
+
+public class IncomeSeviceImpl implements IncomeService {
+	
+	@Autowired
+	private IncomeRepo incomeRepo; 
+
+	@Override
+	public List<Income> getAllIncome() {
+		return incomeRepo.findAll() ;
+	}
+
+	@Override
+	public Income addIncome(Income addIncome) {
+		return incomeRepo.save(addIncome);
+	}
+
+	@Override
+	public String deleteIncome(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Income updateIncome(Income updateIncome) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

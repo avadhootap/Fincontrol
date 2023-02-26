@@ -2,21 +2,46 @@ package com.app.pojos;
 
 import java.time.Instant;
 import javax.persistence.*;
-import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public class BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
+	
+	
+	
+	public BaseEntity(Long id, String name, double amount, Instant date, String description) {
+		super();
+		this.id = id;
+		this.name = name;
+		Amount = amount;
+		Date = date;
+		this.description = description;
+	}
+	
+	
+	public BaseEntity() {
+		super();
+	}
+
+
+	@Column(name ="Name")
 	private String name;
+	
+	@Column(name = "Amount")
 	private double Amount;
+	
+	@Column(name = "Date")
 	private Instant Date;
+	
+	@Column(name = "Description")
 	private String description;
-	public long getId() {
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -42,6 +67,13 @@ public class BaseEntity {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+
+	@Override
+	public String toString() {
+		return "BaseEntity [id=" + id + ", name=" + name + ", Amount=" + Amount + ", Date=" + Date + ", description="
+				+ description + "]";
 	}
 	
 	

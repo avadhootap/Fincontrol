@@ -1,0 +1,55 @@
+package com.app.pojos;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="Expense")
+public class Expense extends BaseEntity{
+	
+	@ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+	
+	@ManyToOne
+    @JoinColumn(name = "Category_Type")
+    private Category category;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Expense(User user, Category category) {
+		super();
+		this.user = user;
+		this.category = category;
+	}
+
+	public Expense() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Expense [user=" + user + ", category=" + category + "]";
+	}
+	
+
+	
+	
+	
+	
+    
+
+}

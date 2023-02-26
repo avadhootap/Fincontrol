@@ -1,0 +1,45 @@
+package com.app.pojos;
+
+import java.time.Instant;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="Income")
+public class Income extends BaseEntity{
+	
+	@ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+	
+	
+	
+
+	public Income(long id, String name, double amount, Instant date, String description, User user) {
+		super(id, name, amount, date, description);
+		this.user = user;
+	}
+
+	public Income() {
+		super();
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return "Income [user=" + user + "]";
+	}
+
+	
+
+	
+	
+
+}

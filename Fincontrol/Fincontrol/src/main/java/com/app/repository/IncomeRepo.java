@@ -1,5 +1,11 @@
 package com.app.repository;
 
-public class IncomeRepo {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.app.pojos.Income;
+
+public interface IncomeRepo extends JpaRepository<Income, Long> {
+	
+	
 
 }

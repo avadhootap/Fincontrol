@@ -1,0 +1,23 @@
+package com.app.pojos;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="Category")
+public class Category extends BaseEntity1 {
+	
+	 @Column(name = "Type")
+	private ExpenseCategory type;
+	 
+	 @Column(name = "Description")
+	private String description;
+	 
+	 @OneToMany
+	 private List<Expense>expenses=new ArrayList<Expense>();
+	
+	
+
+}

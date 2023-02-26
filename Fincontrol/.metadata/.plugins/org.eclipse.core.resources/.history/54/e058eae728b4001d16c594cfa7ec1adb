@@ -1,0 +1,42 @@
+package com.app.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.pojos.Expense;
+import com.app.repository.ExpenseRepo;
+
+
+public class ExpenseServiceImpl implements ExpenseService {
+	
+	@Autowired
+	private ExpenseRepo exprepo;
+
+	@Override
+	public List<Expense> getAllExpense() {
+		return exprepo.findAll();
+	}
+
+	@Override
+	public Expense addExpense(Expense addExpense) {
+		// TODO Auto-generated method stub
+		return exprepo.save(addExpense);
+	}
+
+	@Override
+	public String deleteExpense() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Expense updateExpense(Expense updateExp) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+
+}

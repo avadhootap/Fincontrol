@@ -1,0 +1,46 @@
+package com.app.pojos;
+
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access; 	
+@Entity
+@Table(name="Expense")
+public class Expense extends BaseEntity{
+	
+	@ManyToOne
+    @JoinColumn(name = "user_id")
+	@JsonProperty(access = Access.READ_ONLY)
+    private User user;
+	
+	@ManyToOne
+    @JoinColumn(name = "Category_Id")
+	@JsonProperty(access = Access.READ_ONLY)
+    private Category category;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	
+
+	public Expense() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Expense [user=" + user + ", category=" + category + "]";
+	}
+}
