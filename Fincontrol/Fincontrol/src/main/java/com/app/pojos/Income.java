@@ -1,6 +1,7 @@
 package com.app.pojos;
 
-import java.time.Instant;
+
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import java.util.Date;
 
 @Entity
 @Table(name="Income")
@@ -23,10 +23,10 @@ public class Income {
 	private Long id;
 	
 	@Column(name = "Amount")
-	private double Amount;
+	private double amount;
 	
 	@Column(name = "Date")
-	private Date Date;
+	private LocalDate date;
 	
 	@Column(name = "Description")
 	private String description;
@@ -36,7 +36,7 @@ public class Income {
 	private IncomeCategoryType categoryType;
 	
 	@ManyToOne
-	@JoinColumn(name = "E_UserId")
+	@JoinColumn(name = "UserId")
 	private User users;
 
 	public User getUsers() {
@@ -51,11 +51,11 @@ public class Income {
 		super();
 	}
 
-	public Income(Long id, double amount, Date date, String description, IncomeCategoryType categoryType) {
+	public Income(Long id, double amount, LocalDate date, String description, IncomeCategoryType categoryType) {
 		super();
 		this.id = id;
-		Amount = amount;
-		Date = date;
+		this.amount = amount;
+		this.date = date;
 		this.description = description;
 		this.categoryType = categoryType;
 	}
@@ -69,19 +69,19 @@ public class Income {
 	}
 
 	public double getAmount() {
-		return Amount;
+		return amount;
 	}
 
 	public void setAmount(double amount) {
-		Amount = amount;
+		this.amount = amount;
 	}
 
-	public Date getDate() {
-		return Date;
+	public LocalDate getDate() {
+		return date;
 	}
 
-	public void setDate(Date date) {
-		Date = date;
+	public void setDate(LocalDate date) {
+		this.date = date;
 	}
 
 	public String getDescription() {
@@ -102,7 +102,7 @@ public class Income {
 	
 	@Override
 	public String toString() {
-		return "Income [id=" + id + ", Amount=" + Amount + ", Date=" + Date + ", description=" + description
+		return "Income [id=" + id + ", Amount=" + amount + ", Date=" + date + ", description=" + description
 				+ ", categoryType=" + categoryType + ", users=" + users + "]";
 	}
 	

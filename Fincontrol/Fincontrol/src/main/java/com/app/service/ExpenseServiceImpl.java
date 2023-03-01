@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.pojos.Expense;
+import com.app.pojos.ExpenseCategoryType;
+import com.app.pojos.User;
 //import com.app.pojos.Expense;
 import com.app.repository.ExpenseRepo;
 
@@ -43,6 +46,30 @@ public class ExpenseServiceImpl implements ExpenseService {
 		return exprepo.save(updateExp);
 	}
 	return null;
+	}
+
+	@Override
+	public List<Expense> getExpenseByDate(LocalDate date, User user) {
+		// TODO Auto-generated method stub
+		return exprepo.findByDateAndUser(date,user);
+	}
+
+	@Override
+	public List<Expense> getExpenseByCategory(ExpenseCategoryType getcategory, User user) {
+		// TODO Auto-generated method stub
+		return exprepo.findByCategoryTypeAndUser(getcategory, user);
+	}
+
+	@Override
+	public List<Expense> getExpenseByAmount(double amount, User user) {
+		// TODO Auto-generated method stub
+		return exprepo.findByAmountAndUser(amount,user);
+	}
+
+	@Override
+	public List<Expense> getByUser(User user) {
+		
+		return exprepo.findByUser(user);
 	}
 	
 	

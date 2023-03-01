@@ -1,6 +1,8 @@
 package com.app.pojos;
 
 import java.time.Instant;
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -28,7 +30,7 @@ public class Expense {
 	private double amount;
 	
 	@Column(name = "Date")
-	private Date date;
+	private LocalDate date;
 	
 	@Column(name = "Description")
 	private String description;
@@ -41,7 +43,7 @@ public class Expense {
 	@JoinColumn(name = "UserId")
 	private User user;
 
-	public Expense(Long expenseid, double amount, Date date, String description, ExpenseCategoryType categoryType) {
+	public Expense(Long expenseid, double amount, LocalDate date, String description, ExpenseCategoryType categoryType) {
 		super();
 		Expenseid = expenseid;
 		this.amount = amount;
@@ -70,11 +72,11 @@ public class Expense {
 		this.amount = amount;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
